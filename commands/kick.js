@@ -12,11 +12,11 @@ module.exports.run = async (client, message, args) => {
     
     if (!args[1]) return message.reply("Please give up a reason.");
 
-    var banUser = message.guild.members.cache.get(message.mentions.users.first().id || message.guild.members.get(args[0]).id);
+    var kickUser = message.guild.members.cache.get(message.mentions.users.first().id || message.guild.members.get(args[0]).id);
 
-    if (!banUser) return message.reply("Can't find that person.");
+    if (!kickUser) return message.reply("Can't find that person.");
 
-    if(banUser.permissions.has("MANAGE_MESSAGES")) return message.reply("You don't have acces to ban that user");
+    if(kickUser.permissions.has("MANAGE_MESSAGES")) return message.reply("You don't have acces to ban that user");
 
     var reason = args.slice(1).join(" ");
 
@@ -27,7 +27,7 @@ module.exports.run = async (client, message, args) => {
 
     var embed = new discord.MessageEmbed()
         .setColor("RED")
-        .setDescription(`**Banned:** ${banUser} (${banUser.id})
+        .setDescription(`**Kicked:** ${kickUser} (${kickUser.id})
             **Kicked by:** ${message.author}
             **Reason:** ${reason}`)
         .setFooter(message.member.displayName)
