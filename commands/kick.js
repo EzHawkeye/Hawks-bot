@@ -20,12 +20,12 @@ module.exports.run = async (client, message, args) => {
 
     var reason = args.slice(1).join(" ");
 
-    var embedPrompt = new discord.MessageEmbed()
+    var embedPrompt = new Discord.MessageEmbed()
         .setColor("GREEN")
         .setTitle("Anwser in 30 Seconds.")
         .setDescription(`You want to kick ${kickUser} ?`);
 
-    var embed = new discord.MessageEmbed()
+    var embed = new Discord.MessageEmbed()
         .setColor("RED")
         .setDescription(`**Kicked:** ${kickUser} (${kickUser.id})
             **Kicked by:** ${message.author}
