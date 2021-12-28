@@ -14,7 +14,7 @@ module.exports = {
 
         const kickembed = new Discord.MessageEmbed()
         .setColor("RED")
-        .setDescription(`**Kicked user:** ${message.mentions.members}
+        .setDescription(`**Kicked user:** ${.mentions.members}
             **Kicked by:** ${message.author}
             **Reason:** ${reason}`)
         .setTimestamp()
