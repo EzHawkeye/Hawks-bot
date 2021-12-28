@@ -23,7 +23,7 @@ module.exports.run = async (client, message, args) => {
     var embedPrompt = new discord.MessageEmbed()
         .setColor("GREEN")
         .setTitle("Anwser in 30 Seconds.")
-        .setDiscription(`You want to kick ${kickUser} ?`);
+        .setDescription(`You want to kick ${kickUser} ?`);
 
     var embed = new discord.MessageEmbed()
         .setColor("RED")
