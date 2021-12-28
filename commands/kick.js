@@ -26,13 +26,13 @@ module.exports = {
 
 
         try {
-            await mentionMember.send(kickembed);
+            await message.channel.send(kickembed);
         } catch (err) {
 
         }
 
         try {
-            await mentionMember.kick(reason);
+            await message.channel.kick(reason);
         } catch (err) {
             return message.channel.send("I was unabe to kick this user! Sorry...")
         }
