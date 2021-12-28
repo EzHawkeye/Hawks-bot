@@ -12,7 +12,6 @@ const client = new Client({
     Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_MESSAGE_REACTIONS]
 });
 
-const client = new Discord.Client();
 client.commands = new Discord.Collection();
 
 fs.readdir("./commands/", (err, files) => {
