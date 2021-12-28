@@ -30,7 +30,7 @@ fs.readdir("./commands/", (err, files) => {
         var fileGet = require(`./commands/${f}`);
         console.log(`De kanker file ${f} is geladen`);
 
-        bot.commands.set(fileGet.help.name, fileGet);
+        client.commands.set(fileGet.help.name, fileGet);
 
     })
 
@@ -41,7 +41,7 @@ client.once("ready", async () => {
 
     console.log(`BOOMMM ${bot.user.username} is online!`);
 
-    bot.user.setActivity("🛠️ Hawk Dev..", { type: "WATCHING" });
+    client.user.setActivity("🛠️ Hawk Dev..", { type: "WATCHING" });
 
 });
 
