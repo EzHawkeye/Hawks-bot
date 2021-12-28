@@ -29,6 +29,6 @@ module.exports = {
         await message.channel.send(embed);
         await mentionMember.ban({
             reason: reason
-        }).then(() => message.channel.send("Successfully banned: " + mentionMember.user.tag));
+        })
     }
 }
