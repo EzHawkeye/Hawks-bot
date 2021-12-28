@@ -26,7 +26,7 @@ module.exports.run = async (Client, message, args) => {
      .setDescription(`**Kicked:** ${kickUser}
      **Kicked by:** ${message.author}
      **Reason:** ${reason}`)
-     .setFooter(message.member.displayname)
+     .setFooter(message.member.displayName)
      .setTimestamp();
 
      return message.reply(embedPrompt);
