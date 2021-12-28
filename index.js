@@ -48,9 +48,9 @@ bot.on("ready", async () => {
 
 
 
-client.on("messageCreate", message => {
+bot.on("messageCreate", message => {
 
-    if(message.author.bot) return;
+    if (message.author.bot) return;
 
     var prefix = botConfig.prefix;
 
@@ -58,7 +58,7 @@ client.on("messageCreate", message => {
 
     var command = messageArray[0];
 
-    if(command == `${prefix}hallo`){
+    if(command == `${prefix}hallo`) {
         return message.channel.send("Hallo");
     }
 
