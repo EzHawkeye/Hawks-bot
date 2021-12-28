@@ -1,7 +1,7 @@
 const { CommandInteraction } = require("discord.js");
 const discord = require("discord.js");
 
-module.exports.run = async (Client, message, args) => {
+module.exports.run = async (bot, message, args) => {
 
 
 
