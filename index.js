@@ -39,7 +39,7 @@ fs.readdir("./commands/", (err, files) => {
 
 client.once("ready", async () => {
 
-    console.log(`BOOMMM ${bot.user.username} is online!`);
+    console.log(`BOOMMM ${client.user.username} is online!`);
 
     client.user.setActivity("🛠️ Hawk Dev..", { type: "WATCHING" });
 
