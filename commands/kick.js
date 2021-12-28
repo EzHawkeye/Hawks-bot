@@ -9,15 +9,12 @@ module.exports = {
 
         const mentionMember = message.mentions.members.first();
         let reason = args.slice(1).join(" "); //.kick <args(0) aka @member> | <args(1) aka reason>
-
         if (!reason) reason = "No reason given";
 
         const kickembed = new Discord.MessageEmbed()
-        .setColor("RED")
-        .setTitle (`You were kicked from **${message.guild.name}**`)
-        .setDescription(`**Kicked user:** ${mentionMember}
-            **Kicked by:** ${message.author}
-            **Reason:** ${reason}`)
+        .setTitle(`You were kicked from **${message.guild.name}**`)
+        .setDescription(`Reason: ${reason}`)
+        .setColor("RANDOM")
         .setTimestamp()
         .setFooter(bot.user.tag, bot.user.displayAvatarURL())
 
@@ -31,12 +28,11 @@ module.exports = {
         try {
             await mentionMember.send(kickembed);
         } catch (err) {
-            return message.channel.send(kickembed);
 
         }
 
         try {
-            await message.channel.kick(reason);
+            await mentionMember.kick(reason);
         } catch (err) {
             return message.channel.send("I was unabe to kick this user! Sorry...")
         }
