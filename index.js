@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 
 
-const { token } = require('./config.json');
+//const { token } = require('./config.json');
 
 const { readdirSync, read } = require('fs');
 
