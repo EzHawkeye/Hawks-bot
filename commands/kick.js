@@ -29,7 +29,7 @@ module.exports = {
 
         try {
             await mentionMember.send(kickembed);
-            return message.channel.send(kickembed)
+            await message.channel.send(kickembed)
         } catch (err) {
 
         }
