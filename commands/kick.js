@@ -26,11 +26,14 @@ module.exports = {
 
         if(!mentionMember.kickable) return message.channel.send("I was unable to kick this user!");
 
+        
+
 
         try {
             await mentionMember.send(kickembed);
-            await message.channel.send(kickembed)
         } catch (err) {
+
+            return message.channel.send(kickembed);
 
         }
 
