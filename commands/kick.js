@@ -67,10 +67,10 @@ module.exports.run = async (client, message, args) => {
                     if (err) return message.channel.send(`Something went wrong.`);
                 });
 
-                message.channel.send({ embeds: embed });
+                message.channel.send({ embeds: [embed] });
                 
 
-            }else if(emojiDetails.emoji.name === "❌") {
+            } else if (emojiDetails.emoji.name === "❌") {
 
                 msg.delete();
 
@@ -79,21 +79,12 @@ module.exports.run = async (client, message, args) => {
                     setTimeout(() => msg.delete(), 5000);
                 });
 
-
-
             }
-
-
-     
-            
+                 
         });
     });
 
     
-    
-
-
-
 
 
 
