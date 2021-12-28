@@ -29,7 +29,13 @@ module.exports.run = async (Client, message, args) => {
      .setFooter(message.member.displayname)
      .setTimestamp();
 
-     message.channel.send({ embeds: [embedPrompt] }).then(async msg =>)
+     return message.reply(embed);
+
+    
+
+
+
+     //message.channel.send({ embeds: [embedPrompt] }).then(async msg =>)
 
 
 
