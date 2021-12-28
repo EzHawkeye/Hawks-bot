@@ -9,11 +9,12 @@ module.exports = {
 
         const mentionMember = message.mentions.members.first();
         let reason = args.slice(1).join(" "); //.kick <args(0) aka @member> | <args(1) aka reason>
+        let person = msg.guild.member(msg.mentions.users.first() || msg.guild.members.fetch(args[1]))
         if (!reason) reason = "No reason given";
 
         const kickembed = new Discord.MessageEmbed()
         .setColor("RED")
-        .setDescription(`**Kicked user:** ${person.user.tag}
+        .setDescription(`**Kicked user:** @${person.user.tag}
             **Kicked by:** ${message.author}
             **Reason:** ${reason}`)
         .setTimestamp()
