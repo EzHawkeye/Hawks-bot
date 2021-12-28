@@ -12,8 +12,8 @@ const client = new Client({
     Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_MESSAGE_REACTIONS]
 });
 
-const bot = new Discord.Client();
-bot.commands = new Discord.Collection();
+const client = new Discord.Client();
+client.commands = new Discord.Collection();
 
 fs.readdir("./commands/", (err, files) => {
 
@@ -38,17 +38,17 @@ fs.readdir("./commands/", (err, files) => {
 });
 
 
-bot.on("ready", async () => {
+client.once("ready", async () => {
 
     console.log(`BOOMMM ${bot.user.username} is online!`);
 
     bot.user.setActivity("🛠️ Hawk Dev..", { type: "WATCHING" });
 
-})
+});
 
 
 
-bot.on("messageCreate", message => {
+client.on("messageCreate", message => {
 
     if (message.author.bot) return;
 
