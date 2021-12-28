@@ -16,7 +16,9 @@ module.exports.run = async (bot, message, args) => {
 
      if (!kickUser) return message.reply("Can't find that person.");
 
-     if(kickUser.permissions.has("MANAGE_MESSAGES")) return message.reply("You don't have acces to kick that user");
+     if (kickUser.permissions.has("MANAGE_MESSAGES")) return message.reply("You don't have acces to kick that user");
+
+     var reason = args.slice(1).join(" ");
 
 
      var embedPrompt = new discord.MessageEmbed()
