@@ -15,7 +15,9 @@ module.exports = {
         .setColor("RED")
         .setTitle (`You were kicked from **${message.guild.name}**`)
         .setDescription(`**Kicked user:** ${mentionMember}
+        
             **Kicked by:** ${message.author}
+
             **Reason:** ${reason}`)
         .setTimestamp()
         .setFooter(bot.user.tag, bot.user.displayAvatarURL())
