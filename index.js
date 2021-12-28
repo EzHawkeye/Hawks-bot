@@ -1,10 +1,16 @@
-const Discord = require("discord.js");
+const { Client, Intents, Collection } = require("discord.js");
+//const Discord = require("discord.js");
 const botConfig = require("./botconfig.json");
 
 Discord.RichEmbed = Discord.MessageEmbed;
 
 
 const fs = require("fs");
+
+const client = new Client({
+    intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES,
+    Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_MESSAGE_REACTIONS]
+});
 
 const bot = new Discord.Client();
 bot.commands = new Discord.Collection();
