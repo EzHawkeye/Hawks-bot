@@ -1,4 +1,3 @@
-const { CommandInteraction } = require("discord.js");
 const discord = require("discord.js");
 
 module.exports.run = async (client, message, args) => {
