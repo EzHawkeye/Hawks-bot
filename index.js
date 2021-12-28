@@ -46,32 +46,25 @@ bot.on("ready", async () => {
 
 })
 
-bot.on("message", async message => {
 
-    // Als bot bericht stuurt stuur dan return
-    if (message.author.bot) return;
 
-    if (message.channel.type === "dm") return;
+client.on("messageCreate", message => {
 
+    if(message.author.bot) return;
 
     var prefix = botConfig.prefix;
 
     var messageArray = message.content.split(" ");
 
-
     var command = messageArray[0];
 
-    if(!message.content.startsWith(prefix)) return;
-    
-    var arguments = messageArray.slice(1);
+    if(command == `${prefix}hallo`){
+        return message.channel.send("Hallo");
+    }
 
 
-    var commands = bot.commands.get(command.slice(prefix.length));
 
-    if(commands) commands.run(bot,message, arguments);
-
-
-}); 
+});
 
 
 
