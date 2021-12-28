@@ -4,20 +4,30 @@ const discord = require("discord.js");
 module.exports.run = async (Client, message, args) => {
 
 
-    module.exports = {
 
-        execute(message, args){
-            const target = message.mentions.users.first();
-            if(target){
-                const memberTarget = message.guild.members.cache.get(target.id);
-                memberTarget.kick();
-                message.channel.send("User has been kicked");
-            }else{
-                message.channel.send(`You coudn't kick that member!`);
-            }
-        }
+    const target = message.mentions.members.first()
+    if (!target) {
+        const embed1 = new Discord.MessageEmbed()
+        .setColor(commonjson.failcolor)
+        .setTitle("Error")
+        .setDescription("User does not exist in this server")
+        message.channel.send(embed1);
+        return
     }
 
+
+        target.kick('not cool man')
+        .then(async(target) => {
+            
+            const embed2 = new Discord.MessageEmbed()
+            .setColor(commonjson.defaultolor)
+            .setTitle(`Kicked!`)
+            .setDescription(`You've kicked ${target.DisplayName} successfully`)
+            message.channel.send(embed2);
+            
+        }).catch(() => {
+            // Failmessage
+        });
 
 
 }
