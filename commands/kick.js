@@ -29,7 +29,7 @@ module.exports.run = async (Client, message, args) => {
      .setFooter(message.member.displayname)
      .setTimestamp();
 
-     return message.reply(embed);
+     return message.reply(embedPrompt);
 
     
 
