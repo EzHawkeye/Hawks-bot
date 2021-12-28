@@ -11,7 +11,7 @@ const { join } = require('path');
 
 bot.commands = new Discord.Collection();
 
-const prefix = '.';
+const prefix = '-';
 //this prefix can be what ever you want ;)
 
 const commandFiles = readdirSync(join(__dirname, "commands")).filter(file => file.endsWith(".js"));
