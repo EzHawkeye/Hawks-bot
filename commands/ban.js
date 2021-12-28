@@ -12,7 +12,7 @@ module.exports = {
         if (!reason) reason = "No reason given";
 
         const embed = new Discord.MessageEmbed()
-        .setColor("ORANGE")
+        .setColor("RED")
         .setTitle (`You were Banned from **${message.guild.name}**`)
         .setDescription(`**Banned user:** ${mentionMember}
             **Banned by:** ${message.author}
