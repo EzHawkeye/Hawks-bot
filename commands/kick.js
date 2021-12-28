@@ -4,7 +4,7 @@ const discord = require("discord.js");
 module.exports.run = async (Client, message, args) => {
 
 
-     if(!message.member.permissions.has("KICK_MEMBERS")) return message.reply("You can't use that Command.");
+     if (!message.member.permissions.has("KICK_MEMBERS")) return message.reply("You can't use that Command.");
 
      if (!message.guild.me.permissions.has("KICK_MEMBERS")) return message.reply("You don't have permission for this.");
 
@@ -23,13 +23,18 @@ module.exports.run = async (Client, message, args) => {
 
      var embedPrompt = new discord.MessageEmbed()
      .setColor("RED")
-     .setDescription(`**Kicked:** ${kickUser} (${kickUser.id})
+     .setDescription(`**Kicked:** ${kickUser}
      **Kicked by:** ${message.author}
      **Reason:** ${reason}`)
      .setFooter(message.member.displayname)
      .setTimestamp();
 
      return message.reply(embedPrompt);
+
+     kickUser.kick(reason).catch(err => {
+         if (err) return message.channel.send(`Something went wrong.`);
+
+     });
 
     
 
