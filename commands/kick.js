@@ -1,6 +1,6 @@
 const discord = require("discord.js");
 
-module.exports.run = async (client, message, args) => {
+module.exports.run = async (bot, message, args) => {
 
     
     if(!message.member.permissions.has("KICK_MEMBERS")) return message.reply("You can't use that Command.");
