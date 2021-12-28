@@ -12,9 +12,11 @@ module.exports = {
         if (!reason) reason = "No reason given";
 
         const kickembed = new Discord.MessageEmbed()
-        .setTitle(`You were kicked from **${message.guild.name}**`)
-        .setDescription(`Reason: ${reason}`)
-        .setColor("RANDOM")
+        .setColor("RED")
+        .setTitle (`You were kicked from **${message.guild.name}**`)
+        .setDescription(`**Kicked user:** ${mentionMember}
+            **Kicked by:** ${message.author}
+            **Reason:** ${reason}`)
         .setTimestamp()
         .setFooter(bot.user.tag, bot.user.displayAvatarURL())
 
