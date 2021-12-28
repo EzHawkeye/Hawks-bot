@@ -1,40 +1,32 @@
-const { CommandInteraction } = require("discord.js");
-const discord = require("discord.js");
+const Discord = require('discord.js')
 
-module.exports.run = async (bot, message, args) => {
-
-
-     if(!message.member.permissions.has("KICK_MEMBERS")) return message.reply("You can't use that Command.");
-
-     if (!message.guild.me.permissions.has("KICK_MEMBERS")) return message.reply("You don't have permission for this.");
-
-     if(!args[0]) return message.reply("You did not choose a member.");
-     
-     if (!args[1]) return message.reply("Please give up a reason.");
-
-     var banUser = message.guild.members.cache.get(message.mentions.users.first().id || message.guild.members.get(args[0]).id);
-
-     if (!banUser) return message.reply("Can't find that person.");
-
-     if(banUser.permissions.has("MANAGE_MESSAGES")) return message.reply("You don't have acces to ban that user");
-
-     var reason = args.slice(1).join(" ");
-
-     var embedPrompt = new discord.MessageEmbed()
-     .setColor("RED")
-     .setDescription(`**Banned:** ${banUser} (${banUser.id})
-     **Kicked by:** ${message.author}
-     **Reason:** ${reason}`)
-     .setFooter(message.member.displayname)
-     .setTimestamp();
-
-
-
-
-}
-
-module.exports.help = {
+module.exports = {
     name: "ban",
-    category: "general",
-    discription: "ban"
+    description: "ban command",
+
+    async run (bot, message, args) {
+        if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("You cant use this command!")
+
+        const mentionMember = message.mentions.members.first();
+        let reason = args.slice(1).join(" "); //.ban <args(0) aka @member> | <args(1) aka reason>
+        if (!reason) reason = "No reason given";
+
+        const embed = new Discord.MessageEmbed()
+        .setTitle(`You were banned from **${message.guild.name}**`)
+        .setDescription(`Reason: ${reason}`)
+        .setColor("RANDOM")
+        .setTimestamp()
+        .setFooter(bot.user.tag, bot.user.displayAvatarURL())
+
+        if (!args[0]) return message.channel.send("You need to specify a user to ban");
+
+        if(!mentionMember) return message.channel.send("This user is not a valid user / is no-longer in the server!");
+
+        if(!mentionMember.bannable) return message.channel.send("I was unable to ban this user!");
+
+        await mentionMember.send(embed);
+        await mentionMember.ban({
+            reason: reason
+        }).then(() => message.channel.send("Successfully banned: " + mentionMember.user.tag));
+    }
 }
