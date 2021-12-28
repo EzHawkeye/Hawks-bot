@@ -1,7 +1,7 @@
 const { CommandInteraction } = require("discord.js");
 const discord = require("discord.js");
 
-module.exports.run = async (bot, message, args) => {
+module.exports.run = async (Client, message, args) => {
 
 
      if(!message.member.permissions.has("KICK_MEMBERS")) return message.reply("You can't use that Command.");
@@ -28,6 +28,8 @@ module.exports.run = async (bot, message, args) => {
      **Reason:** ${reason}`)
      .setFooter(message.member.displayname)
      .setTimestamp();
+
+     message.channel.send({ embeds: [embedPrompt] }).then(async msg =>)
 
 
 
