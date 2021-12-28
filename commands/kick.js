@@ -19,6 +19,16 @@ module.exports.run = async (bot, message, args) => {
      if(kickUser.permissions.has("MANAGE_MESSAGES")) return message.reply("You don't have acces to kick that user");
 
 
+     var embedPrompt = new discord.MessageEmbed()
+     .setColor("RED")
+     .setDescription(`**Kicked:** ${kickUser} (${kickUser.id})
+     **Kicked by:** ${message.author}
+     **Reason:** ${reason}`)
+     .setFooter(message.member.displayname)
+     .setTimestamp();
+
+
+
 
 }
 
