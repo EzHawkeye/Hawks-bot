@@ -4,43 +4,32 @@ const discord = require("discord.js");
 module.exports.run = async (Client, message, args) => {
 
 
-     if (!message.member.permissions.has("KICK_MEMBERS")) return message.reply("You can't use that Command.");
-
-     if (!message.guild.me.permissions.has("KICK_MEMBERS")) return message.reply("You don't have permission for this.");
-
-     if(!args[0]) return message.reply("You did not choose a member.");
-     
-     if (!args[1]) return message.reply("Please give up a reason.");
-
-     var kickUser = message.guild.members.cache.get(message.mentions.users.first().id || message.guild.members.get(args[0]).id);
-
-     if (!kickUser) return message.reply("Can't find that person.");
-
-     if (kickUser.permissions.has("MANAGE_MESSAGES")) return message.reply("You don't have acces to kick that user");
-
-     var reason = args.slice(1).join(" ");
+    const target = message.mentions.members.first()
+        if (!target) {
+            const embed1 = new Discord.MessageEmbed()
+            .setColor(commonjson.failcolor)
+            .setTitle("Error")
+            .setDescription("User does not exist in this server")
+            message.channel.send(embed1);
+            return
+        }
 
 
-     var embedPrompt = new discord.MessageEmbed()
-     .setColor("RED")
-     .setDescription(`**Kicked:** ${kickUser}
-     **Kicked by:** ${message.author}
-     **Reason:** ${reason}`)
-     .setFooter(message.member.displayName)
-     .setTimestamp();
+            target.kick('not cool man')
+            .then(async(target) => {
+                
+                const embed2 = new Discord.MessageEmbed()
+                .setColor(commonjson.defaultolor)
+                .setTitle(`Kicked!`)
+                .setDescription(`You've kicked ${target.DisplayName} successfully`)
+                message.channel.send(embed2);
+                
+            }).catch(() => {
+                // Failmessage
+            });
 
-     return message.reply(embedPrompt);
-
-     kickUser.kick(reason).catch(err => {
-         if (err) return message.channel.send(`Something went wrong.`);
-
-     });
 
     
-
-
-
-     //message.channel.send({ embeds: [embedPrompt] }).then(async msg =>)
 
 
 
