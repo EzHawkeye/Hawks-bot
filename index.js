@@ -27,7 +27,7 @@ bot.on("error", console.error);
 //------------------------------------------------------------------------------
 bot.on('ready', () => {
     console.log('Bot is ready!');
-    bot.user.setActivity('Hawk', { type: "WATCHING" }).catch(console.error)
+    bot.user.setActivity('Galaxy C2', { type: "WATCHING" }).catch(console.error)
 })
 //------------------------------------------------------------------------------
 
